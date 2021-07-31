@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="appDescription" xml:space="preserve">
+    <value>A simple comic book reader app!</value>
+  </data>
+  <data name="appDisplayName" xml:space="preserve">
+    <value>Comic Book Reader</value>
+  </data>
+  <data name="GeneralLoading.Text" xml:space="preserve">
+    <value>読み込み中</value>
+    <comment>Loading</comment>
+  </data>
+  <data name="GroupComics" xml:space="preserve">
+    <value>コミック</value>
+    <comment>Comics</comment>
+  </data>
+  <data name="GroupPublishers" xml:space="preserve">
+    <value>出版社</value>
+    <comment>Publishers</comment>
+  </data>
+  <data name="GroupSeries" xml:space="preserve">
+    <value>シリーズ</value>
+    <comment>Series</comment>
+  </data>
+  <data name="HomeAppBarImport.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>読み込み</value>
+    <comment>Import</comment>
+  </data>
+  <data name="HomeAppBarRefresh.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>更新</value>
+    <comment>Refresh</comment>
+  </data>
+  <data name="HomeNoComics.Text" xml:space="preserve">
+    <value>コミックがありません</value>
+    <comment>No comics present,</comment>
+  </data>
+  <data name="HomeTapImport.Text" xml:space="preserve">
+    <value>読み込みを行うにはここをタップしてください</value>
+    <comment>Tap here to import...</comment>
+  </data>
+  <data name="HomeTitle.Text" xml:space="preserve">
+    <value>Comic Book Reader</value>
+    <comment>Comic Book Reader</comment>
+  </data>
+  <data name="ImportAllDone.Text" xml:space="preserve">
+    <value>すべて完了</value>
+    <comment>all done...</comment>
+  </data>
+  <data name="ImportButtonFile.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>ファイル</value>
+    <comment>file</comment>
+  </data>
+  <data name="ImportButtonFolder.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>フォルダ</value>
+    <comment>folder</comment>
+  </data>
+  <data name="ImportFolderOrFile.Text" xml:space="preserve">
+    <value>フォルダまたはファイルを読み込みます</value>
+    <comment>import a folder or file...</comment>
+  </data>
+  <data name="ImportItem.Text" xml:space="preserve">
+    <value>アイテム</value>
+    <comment>item</comment>
+  </data>
+  <data name="ImportOf.Text" xml:space="preserve">
+    <value>/</value>
+    <comment>of</comment>
+  </data>
+  <data name="ImportTitle.Text" xml:space="preserve">
+    <value>読み込み</value>
+    <comment>Import</comment>
+  </data>
+  <data name="ImportUseButtons.Text" xml:space="preserve">
+    <value>以下のボタンを使用して</value>
+    <comment>use the buttons below to</comment>
+  </data>
+  <data name="ImportWaitWhileImporting.Text" xml:space="preserve">
+    <value>読み込みが完了するまで しばらくお待ちください</value>
+    <comment>please wait while importing...</comment>
+  </data>
+  <data name="GeneralCancel.Content" xml:space="preserve">
+    <value>取り消し</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="GeneralSave.Content" xml:space="preserve">
+    <value>保存</value>
+    <comment>Save</comment>
+  </data>
+  <data name="ComicDetailsFileSize.Text" xml:space="preserve">
+    <value>ファイルサイズ</value>
+    <comment>File size:</comment>
+  </data>
+  <data name="ComicDetailsIssue.Text" xml:space="preserve">
+    <value>号</value>
+    <comment>ISSUE:</comment>
+  </data>
+  <data name="ComicDetailsNumberOfPages.Text" xml:space="preserve">
+    <value>ページ数</value>
+    <comment>Number of pages:</comment>
+  </data>
+  <data name="ComicDetailsPublisher.Text" xml:space="preserve">
+    <value>出版社</value>
+    <comment>PUBLISHER:</comment>
+  </data>
+  <data name="ComicDetailsSeries.Text" xml:space="preserve">
+    <value>シリーズ</value>
+    <comment>SERIES:</comment>
+  </data>
+  <data name="ComicDetailsTitle.Text" xml:space="preserve">
+    <value>タイトル</value>
+    <comment>TITLE:</comment>
+  </data>
+  <data name="GeneralAppBarSelectAll.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>すべてを選択</value>
+    <comment>Select All</comment>
+  </data>
+  <data name="GeneralAppBarUpdate.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>更新</value>
+    <comment>Update</comment>
+  </data>
+  <data name="PublisherTitle.Text" xml:space="preserve">
+    <value>出版社</value>
+    <comment>Publisher:</comment>
+  </data>
+  <data name="SeriesTitle.Text" xml:space="preserve">
+    <value>シリーズ</value>
+    <comment>Series: </comment>
+  </data>
+  <data name="AllComicsTitle.Text" xml:space="preserve">
+    <value>すべてのコミック</value>
+    <comment>All Comics</comment>
+  </data>
+  <data name="AllPublishersTitle.Text" xml:space="preserve">
+    <value>すべての出版社</value>
+    <comment>All Publishers</comment>
+  </data>
+  <data name="AllSeriesTitle.Text" xml:space="preserve">
+    <value>すべてのシリーズ</value>
+    <comment>All Series</comment>
+  </data>
+  <data name="ComicDetailsDeleteComic" xml:space="preserve">
+    <value>現在のコミックを削除してもよろしいですか？</value>
+    <comment>Are you sure you want to delete the current comic?</comment>
+  </data>
+  <data name="ComicDetailsDeletePage" xml:space="preserve">
+    <value>このページを削除してもよろしいですか？</value>
+    <comment>Are you sure you want to delete the page?</comment>
+  </data>
+  <data name="GeneralDelete" xml:space="preserve">
+    <value>削除</value>
+    <comment>delete</comment>
+  </data>
+  <data name="GeneralDontDelete" xml:space="preserve">
+    <value>削除しない</value>
+    <comment>Don't delete</comment>
+  </data>
+  <data name="GeneralGoAhead" xml:space="preserve">
+    <value>はい</value>
+    <comment>Go ahead</comment>
+  </data>
+  <data name="GeneralIssues.Text" xml:space="preserve">
+    <value>問題</value>
+    <comment>issues</comment>
+  </data>
+  <data name="PublisherInputMessage" xml:space="preserve">
+    <value>テキストボックスから新しい出版社名を入力してください</value>
+    <comment>Please use the textbox to provide a new publisher name:</comment>
+  </data>
+  <data name="PublisherInputTitle" xml:space="preserve">
+    <value>出版社名を入力</value>
+    <comment>Input publisher name</comment>
+  </data>
+  <data name="SeriesInputMessage" xml:space="preserve">
+    <value>テキストボックスから新しいシリーズ名を入力してください</value>
+    <comment>Please use the textbox to provide a new series name:</comment>
+  </data>
+  <data name="SeriesInputTitle" xml:space="preserve">
+    <value>シリーズ名を入力</value>
+    <comment>Input series name</comment>
+  </data>
+  <data name="RemoveAds.Text" xml:space="preserve">
+    <value>あなたは、これらの広告を消去したいと思いますか？</value>
+    <comment>Are you tired of these ads?</comment>
+  </data>
+  <data name="ComicDetailsDeleteComics" xml:space="preserve">
+    <value>選択したコミックを削除してよろしいですか？</value>
+    <comment>Are you sure you want to delete the selected comics?</comment>
+  </data>
+  <data name="GeneralAppBarUpdatePublisher.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>出版社を編集</value>
+    <comment>Update publisher</comment>
+  </data>
+  <data name="GeneralAppBarUpdateSeries.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>シリーズを編集</value>
+    <comment>Update series</comment>
+  </data>
+  <data name="PrivacyPolicyText" xml:space="preserve">
+    <value>"このアプリケーションでは、個人情報を収集/公開することはありません
+アプリケーションは広告表示の為、インターネット接続を要求する場合があります。
+
+このポリシーに関して違反を報告したい場合、e.feggelen@outlook.com までご連絡ください。"</value>
+    <comment>This application does not collect or publish any personal information,
+it requires access to your internet connection to be able to display advertisements.
+
+If you would like to report any violations of this policy, please contact me at e.feggelen@outlook.com</comment>
+  </data>
+  <data name="SettingsCommandAboutPrivacyTitle" xml:space="preserve">
+    <value>個人情報保護方針</value>
+    <comment>Privacy Policy</comment>
+  </data>
+  <data name="SettingsCommandAboutTitle" xml:space="preserve">
+    <value>アプリについて</value>
+    <comment>About</comment>
+  </data>
+  <data name="GeneralAppBarDelete.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="GeneralAppBarRead.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>読む</value>
+  </data>
+  <data name="ViewerAppBarFirst.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>先頭ページ</value>
+    <comment>First</comment>
+  </data>
+  <data name="ViewerAppBarLast.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>最終ページ</value>
+    <comment>Last</comment>
+  </data>
+  <data name="ViewerAppBarNext.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>次のページ</value>
+    <comment>Next</comment>
+  </data>
+  <data name="ViewerAppBarOf.Text" xml:space="preserve">
+    <value>/</value>
+    <comment>of</comment>
+  </data>
+  <data name="ViewerAppBarPage.Text" xml:space="preserve">
+    <value>ページ</value>
+    <comment>Page</comment>
+  </data>
+  <data name="ViewerAppBarPrev.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>前のページ</value>
+    <comment>Prev</comment>
+  </data>
+  <data name="ViewerAppBarTwoPage.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>2ページ</value>
+    <comment>Split</comment>
+  </data>
+  <data name="ViewerAppBarOnePage.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>1ページ</value>
+    <comment>Split</comment>
+  </data>
+  <data name="ViewerAppBarLeftToRight.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>左から右へ</value>
+    <comment>LeftToRight</comment>
+  </data>
+  <data name="ViewerAppBarRightToLeft.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>右から左へ</value>
+    <comment>Right To Left</comment>
+  </data>
+</root>

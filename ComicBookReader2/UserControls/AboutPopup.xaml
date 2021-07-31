@@ -1,0 +1,51 @@
+﻿<UserControl
+    x:Class="ComicBookReader.App.UserControls.AboutPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ComicBookReader.App.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="365">
+
+    <Grid Background="{StaticResource SecondaryThemeBrush}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="aboutPanel" Margin="0,0,15,0">
+                <TextBlock x:Uid="AboutTitle" Style="{StaticResource PageHeaderTextStyle}" Text="About" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <StackPanel Margin="20,0,10,0">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="ComicBookReader"></TextBlock>
+
+                    <TextBlock x:Uid="AboutContact" Style="{StaticResource SubtitleTextStyle}" Text="If you have any questions, suggestions or feedback please contact me using the button below:" Margin="5,10,0,0"></TextBlock>
+                    <Button x:Uid="AboutContactButton" HorizontalAlignment="Center" Margin="5" Style="{StaticResource ButtonStyle1}" Click="btnAppByFex">Send a mail to AppByFex</Button>
+                </StackPanel>
+
+                <StackPanel Margin="20,0,10,0">
+                    <TextBlock x:Uid="AboutReviewTitle" Style="{StaticResource SubheaderTextStyle}" Text="Like what you see?"></TextBlock>
+                    <TextBlock x:Uid="AboutReview" Style="{StaticResource SubtitleTextStyle}" Text="I would love to get a good overall rating in the Windows Store. If you like this app, support me by providing a review and rate this app:" Margin="5,10,0,0"/>
+                    <Button x:Uid="AboutReviewButton" HorizontalAlignment="Center" Margin="5"  Style="{StaticResource ButtonStyle1}" Click="btnRateAndReview">Rate and Review this app</Button>
+                </StackPanel>
+
+
+                <StackPanel Margin="20,0,10,0">
+                    <TextBlock x:Uid="AboutShoutTitle" Style="{StaticResource SubheaderTextStyle}" Text="Shouts out to:"></TextBlock>
+
+                    <TextBlock x:Uid="AboutShout" Style="{StaticResource SubtitleTextStyle}" Text="ComicBookReader wouldn't be possible without the excellent help of various parties, thanks a lot everbody:" Margin="5,10,0,0"></TextBlock>
+                    <TextBlock Style="{StaticResource SubtitleTextStyle}" Text=" - Japanese translation by Noritaka Baba" Margin="5,10,0,0"></TextBlock>
+                    
+                    <TextBlock x:Uid="AboutShoutSC" Style="{StaticResource SubtitleTextStyle}" Text="To SharpCompress, a fully native C# library for RAR, 7Zip, Zip, Tar, GZip and BZip2:" Margin="5,10,0,0"></TextBlock>
+                    <Button x:Uid="AboutShoutSCButton" HorizontalAlignment="Center" Margin="5"  Style="{StaticResource ButtonStyle1}" Click="btnVisitSharpCompress">Visit SharpCompress</Button>
+                </StackPanel>
+
+                <StackPanel Margin="20,0,10,0">
+                    <TextBlock x:Uid="AboutShoutAx" Style="{StaticResource SubtitleTextStyle}" Text="To Ax.NET. Notice anything different about this app? That's right! AnimationExtensions.NET really spiked up the look and feel:" Margin="5,10,0,0"></TextBlock>
+                    <Button x:Uid="AboutShoutAxButton" HorizontalAlignment="Center" Margin="5"  Style="{StaticResource ButtonStyle1}" Content="Visit Ax.NET" Click="btnVisitAxNet"/>
+                </StackPanel>
+                <StackPanel Margin="20,0,10,0">
+                    <TextBlock x:Uid="AboutShoutSL" Style="{StaticResource SubtitleTextStyle}" Text="Last but not least, SuprLogo was the ideal tool for me to generate those nice looking logo's! That's right, no photoshop here! The glyph was generated from WingDings!" Margin="5,10,0,0"></TextBlock>
+                    <Button x:Uid="AboutShoutSLButton" HorizontalAlignment="Center" Margin="5"  Style="{StaticResource ButtonStyle1}" Click="btnVisitSuprLogo">Visit SuprLogo</Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

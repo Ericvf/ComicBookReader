@@ -1,0 +1,236 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
+
+    x:Class="ComicBookReader.App.Views.ComicBookViewer"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ComicBookReader.App.Views"
+    xmlns:common="using:ComicBookReader.App.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    mc:Ignorable="d">
+    <common:LayoutAwarePage.Resources>
+        <Style x:Key="FlipViewStyle1" TargetType="FlipView">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="TabNavigation" Value="Once"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False"/>
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="False"/>
+            <Setter Property="ScrollViewer.IsHorizontalScrollChainingEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.IsVerticalScrollChainingEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
+            <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel AreScrollSnapPointsRegular="True" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="FlipView">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlack"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unfocused"/>
+                                    <VisualState x:Name="PointerFocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="3">
+
+                                <Grid>
+                                    <ScrollViewer x:Name="ScrollingHost" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalSnapPointsType="MandatorySingle" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsTabStop="False" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Padding="{TemplateBinding Padding}" TabNavigation="{TemplateBinding TabNavigation}" VerticalSnapPointsType="MandatorySingle" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled">
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+                            <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                            <Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </common:LayoutAwarePage.Resources>
+    <VisualStateManager.VisualStateGroups>
+
+        <!-- Visual states reflect the application's view state -->
+        <VisualStateGroup x:Name="ApplicationViewStates">
+            <VisualState x:Name="FullScreenLandscape"/>
+            <VisualState x:Name="Filled"/>
+
+            <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+            <VisualState x:Name="FullScreenPortrait">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+
+            <!-- The back button and title have different styles when snapped -->
+            <VisualState x:Name="Snapped">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle x:Name="blackBg" Fill="Black" Grid.RowSpan="3" IsHitTestVisible="False" Visibility="Collapsed" Opacity="0"/>
+
+        <FlipView x:Name="flipView" ItemsSource="{Binding Pages}"  Grid.RowSpan="2"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                  SelectionChanged="flipView_SelectionChanged" Style="{StaticResource FlipViewStyle1}">
+
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <ScrollViewer ZoomMode="Enabled" Padding="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
+                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                  DoubleTapped="ScrollViewer_DoubleTapped">
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="{Binding PrevPage.BitmapImage}" DataContext="{Binding}" Visibility="Collapsed" />
+                            <Image Source="{Binding BitmapImage}" DataContext="{Binding}" Loaded="flipView_ImageLoaded" />
+                            <Image Source="{Binding NextPage.BitmapImage}" DataContext="{Binding}" Visibility="Collapsed" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+        </FlipView>
+
+        <Grid Grid.RowSpan="2" x:Name="controls" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="Transparent" Grid.Row="1" 
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="rectPrev_Tapped" />
+
+            <Rectangle Fill="Transparent" Grid.Column="2" Grid.Row="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="rectNext_Tapped" />
+
+        </Grid>
+
+        <ProgressRing x:Name="progressRing" Grid.RowSpan="3" IsHitTestVisible="False" Width="100" Height="100" Foreground="{StaticResource SecondaryThemeBrush}"/>
+
+        <Grid Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" x:Name="adContainer">
+            <StackPanel Visibility="Collapsed" x:Name="adControl">
+                <Grid Background="Transparent" Tapped="RemoveAdsPurchase_Click">
+                    <TextBlock x:Uid="RemoveAds" Text="Remove ads?" Foreground="Black"/>
+                    <TextBlock x:Uid="RemoveAds" Text="Remove ads?" Foreground="White" Margin="-1,-1,0,0" />
+                </Grid>
+                <!--<UI:AdControl ApplicationId="7f1c2d94-4909-45f9-9f6c-67108f2a5dcb" 
+                    AdUnitId="105185" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom"
+                    Height="90" 
+                    Width="728" Margin="5"/>-->
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
+    <Page.TopAppBar>
+        <AppBar Padding="10,0,10,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Button x:Name="backButton" Click="GoBack" Style="{StaticResource BackButtonStyle}" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                    <TextBlock Text="{Binding ComicBookItem.Title}" Style="{StaticResource PageHeaderTextStyle}" Margin="10,0, 0,0" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Button x:Uid="ViewerAppBarOnePage" Style="{StaticResource PageAppBarButtonStyle}" AutomationProperties.Name="Single page" Click="ToggleSplitPage"  Visibility="{Binding IsTwoPage, Converter={StaticResource VisibilityConverter}}" />
+                    <Button x:Uid="ViewerAppBarTwoPage" Style="{StaticResource TwoPageAppBarButtonStyle}" AutomationProperties.Name="Two page" Click="ToggleSplitPage"  Visibility="{Binding IsTwoPage, Converter={StaticResource VisibilityConverter}, ConverterParameter=true}" />
+
+                    <Button x:Uid="ViewerAppBarLeftToRight" Style="{StaticResource ClosePaneAppBarButtonStyle}" AutomationProperties.Name="Left to Right" Click="Button_Click_1"  Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}, ConverterParameter=true}" />
+                    <Button x:Uid="ViewerAppBarRightToLeft" Style="{StaticResource OpenPaneAppBarButtonStyle}" AutomationProperties.Name="Right To Left" Click="Button_Click_1"  Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}}" />
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.TopAppBar>
+
+    <Page.BottomAppBar>
+        <AppBar Padding="10,0,10,0" Opened="appbarBottom_Opened" Closed="appbarBottom_Closed" x:Name="appBarBottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left"
+                            Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}}">
+                    <Button x:Uid="ViewerAppBarFirst" Style="{StaticResource SkipBackAppBarButtonStyle}" AutomationProperties.Name="First page" Click="btnAppBarFirst_Click"/>
+                    <Button x:Uid="ViewerAppBarPrev" Style="{StaticResource PreviousAppBarButtonStyle}" AutomationProperties.Name="Prev page" Click="btnAppBarPrev_Click"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left"
+                            Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}, ConverterParameter=true}">
+                    <Button x:Uid="ViewerAppBarLast" Style="{StaticResource SkipBackAppBarButtonStyle}" AutomationProperties.Name="Last page" Click="btnAppBarFirst_Click" />
+                    <Button x:Uid="ViewerAppBarNext" Style="{StaticResource PreviousAppBarButtonStyle}" AutomationProperties.Name="Next page"  Click="btnAppBarPrev_Click"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1"  Style="{StaticResource PageHeaderTextStyle}" HorizontalAlignment="Center" Margin="0">
+                    <Run Text="Page" x:Uid="ViewerAppBarPage"/>
+                    <Run Text="{Binding CurrentPage}"/>
+                    <Run Text="of" x:Uid="ViewerAppBarOf"/>
+                    <Run Text="{Binding Pages.Count}"/>
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right"
+                            Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}}">
+                    <Button x:Uid="ViewerAppBarNext" Style="{StaticResource NextAppBarButtonStyle}" AutomationProperties.Name="Next page"  Click="btnAppBarNext_Click"/>
+                    <Button x:Uid="ViewerAppBarLast" Style="{StaticResource SkipAheadAppBarButtonStyle}" AutomationProperties.Name="Last page" Click="btnAppBarLast_Click" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right"
+                            Visibility="{Binding IsLeftToRight, Converter={StaticResource VisibilityConverter}, ConverterParameter=true}">
+                    <Button x:Uid="ViewerAppBarPrev" Style="{StaticResource NextAppBarButtonStyle}" AutomationProperties.Name="Prev page" Click="btnAppBarNext_Click"/>
+                    <Button x:Uid="ViewerAppBarFirst" Style="{StaticResource SkipAheadAppBarButtonStyle}" AutomationProperties.Name="First page" Click="btnAppBarLast_Click"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+</common:LayoutAwarePage>
